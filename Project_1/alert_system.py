@@ -1,6 +1,8 @@
 import psycopg
 import time
     
+time.sleep(2)
+
 try:
     with psycopg.connect(
         "dbname=project1 user=mv password=jjk123 host=/var/run/postgresql port=5432"

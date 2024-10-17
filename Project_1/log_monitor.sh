@@ -47,3 +47,5 @@ tail -F $LOGFILE | while read line; do
     fi
  done
 
+#Clears the log file to prevent duplicate log entries
+> "$LOGFILE"
