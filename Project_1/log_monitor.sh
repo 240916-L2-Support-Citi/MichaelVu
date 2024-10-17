@@ -26,7 +26,7 @@ insert_log_entry() {
 }
 
 # Monitor the log file for ERROR and FATAL entries
-tail -F $LOGFILE | while read line; do
+while read line; do
     # Extract log information (timestamp, level, message)
 
     # awk is command used for text processing, it used here to get parts 1 and 2 for the timestamp
@@ -45,7 +45,7 @@ tail -F $LOGFILE | while read line; do
         # Insert the log entry into PostgreSQL
         insert_log_entry "$TIMESTAMP" "$LEVEL" "$MESSAGE"
     fi
- done
+ done < "$LOGFILE"
 
 #Clears the log file to prevent duplicate log entries
 > "$LOGFILE"
